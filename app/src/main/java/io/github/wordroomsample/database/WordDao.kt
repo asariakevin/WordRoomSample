@@ -3,6 +3,8 @@ package io.github.wordroomsample.database
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
+
 
 @Dao
 interface WordDao {
@@ -14,5 +16,5 @@ interface WordDao {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM word_table ORDER BY word ASC")
-    fun getAlphabatizedWords() : List<Word>
+    fun getAlphabatizedWords() : Flow<List<Word>>
 }
